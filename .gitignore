@@ -1,0 +1,13 @@
+# OS files
+.DS_Store
+Thumbs.db
+
+# Chrome/Browser session data
+*.log
+.gemini/
+antigravity/
+
+# Development
+node_modules/
+.vscode/
+.idea/

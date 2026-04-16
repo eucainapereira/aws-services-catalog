@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AWS Services Catalog</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="popup.css" />
+</head>
+<body>
+
+  <!-- ======== HEADER ======== -->
+  <header class="app-header">
+
+    <!-- Brand / AWS Logo -->
+    <div class="header-brand">
+      <img src="icons/icon128.png" class="aws-logo-svg" alt="Amazon Web Services" />
+
+      <div class="header-divider"></div>
+      <span class="header-tagline">Services Catalog</span>
+    </div>
+
+    <!-- Stats badge -->
+    <div class="header-stats">
+      <div class="stats-dot"></div>
+      <span class="stats-label" id="totalCount">200+ serviços</span>
+    </div>
+
+    <!-- Search -->
+    <div class="header-search">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <circle cx="11" cy="11" r="8"/>
+        <line x1="21" y1="21" x2="16.65" y2="16.65"/>
+      </svg>
+      <input type="text" id="searchInput" placeholder="Buscar serviço AWS..." autocomplete="off" />
+    </div>
+
+  </header>
+
+  <!-- ======== MAIN LAYOUT ======== -->
+  <div class="app-layout">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-inner">
+        <p class="sidebar-label">Categorias</p>
+        <nav id="categoryNav" role="navigation" aria-label="AWS Categories"></nav>
+      </div>
+    </aside>
+
+    <!-- MAIN PANEL -->
+    <main class="main-panel">
+      <div class="panel-header">
+        <h1 id="panelTitle" class="panel-title">Selecione uma categoria</h1>
+        <span id="serviceCount" class="service-count"></span>
+      </div>
+      <div id="servicesGrid" class="services-grid" role="list" aria-label="AWS Services"></div>
+    </main>
+
+  </div>
+
+  <!-- ======== MODAL ======== -->
+  <div id="modal" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <div class="modal-container">
+      <button class="modal-close" id="modalClose" aria-label="Fechar modal">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+          <line x1="18" y1="6" x2="6" y2="18"/>
+          <line x1="6" y1="6" x2="18" y2="18"/>
+        </svg>
+      </button>
+
+      <div class="modal-header">
+        <div id="modalIcon" class="modal-icon-wrapper"></div>
+        <div class="modal-title-group">
+          <span id="modalCategory" class="modal-category-badge"></span>
+          <h2 id="modalTitle" class="modal-service-title"></h2>
+          <p id="modalShortName" class="modal-short-name"></p>
+        </div>
+      </div>
+
+      <div class="modal-body">
+        <section class="modal-section">
+          <div class="section-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="10"/>
+              <line x1="12" y1="8" x2="12" y2="12"/>
+              <line x1="12" y1="16" x2="12.01" y2="16"/>
+            </svg>
+          </div>
+          <div class="section-content">
+            <h3 class="section-title">O que faz</h3>
+            <p id="modalDescription" class="section-text"></p>
+          </div>
+        </section>
+
+        <section class="modal-section">
+          <div class="section-icon accent">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
+            </svg>
+          </div>
+          <div class="section-content">
+            <h3 class="section-title">Caso de Uso Comum</h3>
+            <p id="modalUseCase" class="section-text"></p>
+          </div>
+        </section>
+      </div>
+
+      <div class="modal-footer">
+        <a id="modalDocsLink" href="#" target="_blank" class="docs-btn" rel="noopener noreferrer">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/>
+            <polyline points="15 3 21 3 21 9"/>
+            <line x1="10" y1="14" x2="21" y2="3"/>
+          </svg>
+          Documentação Oficial
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>
