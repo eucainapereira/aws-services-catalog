@@ -2,13 +2,12 @@
 
 ![AWS Services Catalog](icons/icon128.png)
 
-Uma extensão do Chrome poderosa e elegante para explorar, aprender e gerenciar serviços da AWS com uma abordagem focada em **FinOps** e eficiência de custos.
+Uma extensão do Chrome poderosa e elegante para explorar, aprender e gerenciar serviços da AWS.
 
 ## 🚀 Funcionalidades
 
 - **🔍 Busca em Tempo Real:** Encontre rapidamente qualquer serviço da AWS por nome ou funcionalidade.
 - **🏷️ Categorização Inteligente:** Filtre serviços por categorias (Compute, Storage, Database, Networking, Security, etc.).
-- **💰 Insights de FinOps:** Dicas detalhadas sobre billing, impacto financeiro e estratégias de otimização de custos para cada serviço.
 - **✨ Design Premium:** Interface moderna com suporte a modo escuro, efeitos de glassmorphism e animações suaves.
 - **📚 Casos de Uso:** Definições claras e exemplos práticos de quando utilizar cada serviço.
 
@@ -36,4 +35,4 @@ A extensão cobre uma vasta gama de serviços AWS, incluindo:
 
 ---
 
-Desenvolvido com foco na comunidade de Cloud e FinOps. 🚀
+Desenvolvido com foco na comunidade de Cloud por Cainã Pereira
