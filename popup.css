@@ -55,10 +55,11 @@ html, body {
   height: 62px;
   background: var(--aws-dark);
   border-bottom: 1px solid var(--border);
-  gap: 14px;
+  gap: 18px;
   flex-shrink: 0;
   position: relative;
   overflow: hidden;
+  z-index: 100;
 }
 
 /* subtle top orange line */
@@ -80,26 +81,57 @@ html, body {
 
 /* AWS PNG Logo */
 .aws-logo-svg {
-  height: 46px;
-  width: 46px;
+  height: 38px;
+  width: 38px;
   flex-shrink: 0;
-  border-radius: 8px;
+  border-radius: 6px;
   object-fit: cover;
 }
 
 .header-divider {
   width: 1px;
-  height: 22px;
+  height: 20px;
   background: var(--border);
   flex-shrink: 0;
 }
 
 .header-tagline {
-  font-size: 11px;
-  font-weight: 600;
-  color: var(--text-secondary);
-  letter-spacing: 0.3px;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--text-primary);
+  letter-spacing: -0.2px;
   white-space: nowrap;
+}
+
+/* ── Tabs ── */
+.header-tabs {
+  display: flex;
+  background: var(--aws-darker);
+  padding: 4px;
+  border-radius: 8px;
+  gap: 4px;
+  border: 1px solid var(--border);
+}
+.tab-btn {
+  padding: 5px 14px;
+  border-radius: 6px;
+  border: none;
+  background: transparent;
+  color: var(--text-secondary);
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s var(--ease);
+  font-family: inherit;
+}
+.tab-btn:hover {
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--text-primary);
+}
+.tab-btn.active {
+  background: var(--surface-3);
+  color: var(--aws-orange);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
 }
 
 /* ── Stats badge ── */
@@ -113,6 +145,7 @@ html, body {
   padding: 3px 10px;
   flex-shrink: 0;
 }
+
 .stats-dot {
   width: 6px; height: 6px;
   border-radius: 50%;
@@ -582,3 +615,160 @@ html, body {
   transform: translateY(-1px);
   box-shadow: 0 4px 18px rgba(255,153,0,0.38);
 }
+
+/* ── Subservices List ── */
+.subservices-list {
+  list-style: none;
+  margin-top: 8px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6px 12px;
+}
+.subservice-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11.5px;
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: background 0.15s var(--ease), color 0.15s var(--ease), transform 0.15s var(--ease);
+  padding: 4px 6px;
+  border-radius: 4px;
+}
+.subservice-item:hover {
+  background: rgba(255, 153, 0, 0.12);
+  color: var(--aws-orange);
+  transform: translateX(3px);
+}
+.subservice-item::before {
+  content: "•";
+  color: var(--aws-orange);
+  font-weight: bold;
+}
+.section-icon.info {
+  background: rgba(140, 79, 255, 0.1);
+  border-color: rgba(140, 79, 255, 0.2);
+  color: #8C4FFF;
+}
+.hidden { display: none !important; }
+
+/* ── Sub-Modal Specifics ── */
+.sub-modal-overlay {
+  z-index: 1100;
+}
+.sub-modal-container {
+  max-width: 420px;
+}
+
+/* ============================================================
+   VIEWS & ARCHITECTURES
+   ============================================================ */
+.view-content {
+  display: none;
+  flex: 1;
+  height: 100%;
+}
+.view-content.active-view {
+  display: flex;
+}
+
+.arch-container {
+  flex: 1;
+  padding: 16px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.arch-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 16px;
+  padding-bottom: 20px;
+}
+
+.arch-card {
+  background: var(--surface-1);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 16px;
+  cursor: pointer;
+  transition: all 0.22s var(--ease);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  position: relative;
+  overflow: hidden;
+}
+
+.arch-card::before {
+  content: '';
+  position: absolute;
+  top: 0; right: 0;
+  width: 40px; height: 40px;
+  background: linear-gradient(45deg, transparent 50%, rgba(0,115,187,0.1) 50%);
+  pointer-events: none;
+}
+
+.arch-card:hover {
+  border-color: var(--aws-blue);
+  background: var(--surface-2);
+  transform: translateY(-3px);
+  box-shadow: 0 12px 30px rgba(0,0,0,0.5);
+}
+
+.arch-card-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.arch-icon {
+  width: 38px; height: 38px;
+  background: rgba(0,115,187,0.12);
+  border: 1px solid rgba(0,115,187,0.2);
+  border-radius: 10px;
+  display: flex; align-items: center; justify-content: center;
+  color: var(--aws-blue);
+  font-size: 20px;
+}
+
+.arch-title {
+  font-size: 14px;
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: -0.2px;
+}
+
+.arch-desc {
+  font-size: 11px;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+.arch-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: auto;
+  padding-top: 8px;
+}
+
+.arch-tag {
+  font-size: 9px;
+  text-transform: uppercase;
+  font-weight: 700;
+  padding: 2px 7px;
+  border-radius: 4px;
+  background: var(--surface-3);
+  color: var(--text-muted);
+  border: 1px solid var(--border);
+}
+
+.arch-card:hover .arch-icon {
+  background: var(--aws-blue);
+  color: #fff;
+}
+
+

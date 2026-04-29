@@ -19,8 +19,14 @@
       <img src="icons/icon128.png" class="aws-logo-svg" alt="Amazon Web Services" />
 
       <div class="header-divider"></div>
-      <span class="header-tagline">Services Catalog</span>
+      <span class="header-tagline">AWS Guide</span>
     </div>
+
+    <!-- Navigation Tabs -->
+    <nav class="header-tabs">
+      <button id="tabCatalog" class="tab-btn active">Catálogo</button>
+      <button id="tabArch" class="tab-btn">Arquiteturas</button>
+    </nav>
 
     <!-- Stats badge -->
     <div class="header-stats">
@@ -42,22 +48,38 @@
   <!-- ======== MAIN LAYOUT ======== -->
   <div class="app-layout">
 
-    <!-- SIDEBAR -->
-    <aside class="sidebar" id="sidebar">
-      <div class="sidebar-inner">
-        <p class="sidebar-label">Categorias</p>
-        <nav id="categoryNav" role="navigation" aria-label="AWS Categories"></nav>
-      </div>
-    </aside>
+    <!-- View: Catalog -->
+    <div id="catalogView" class="view-content active-view">
+      <!-- SIDEBAR -->
+      <aside class="sidebar" id="sidebar">
+        <div class="sidebar-inner">
+          <p class="sidebar-label">Categorias</p>
+          <nav id="categoryNav" role="navigation" aria-label="AWS Categories"></nav>
+        </div>
+      </aside>
 
-    <!-- MAIN PANEL -->
-    <main class="main-panel">
-      <div class="panel-header">
-        <h1 id="panelTitle" class="panel-title">Selecione uma categoria</h1>
-        <span id="serviceCount" class="service-count"></span>
+      <!-- MAIN PANEL -->
+      <main class="main-panel">
+        <div class="panel-header">
+          <h1 id="panelTitle" class="panel-title">Selecione uma categoria</h1>
+          <span id="serviceCount" class="service-count"></span>
+        </div>
+        <div id="servicesGrid" class="services-grid" role="list" aria-label="AWS Services"></div>
+      </main>
+    </div>
+
+    <!-- View: Architectures -->
+    <div id="archView" class="view-content">
+      <div class="arch-container">
+        <div class="panel-header">
+          <h2 class="panel-title">Arquiteturas de Referência</h2>
+          <span class="service-count">Taxonomia de Software</span>
+        </div>
+        <div id="archGrid" class="arch-grid">
+          <!-- Grid de arquiteturas dinâmico -->
+        </div>
       </div>
-      <div id="servicesGrid" class="services-grid" role="list" aria-label="AWS Services"></div>
-    </main>
+    </div>
 
   </div>
 
@@ -106,6 +128,19 @@
             <p id="modalUseCase" class="section-text"></p>
           </div>
         </section>
+
+        <!-- Subservices Section -->
+        <section id="modalSubservicesSection" class="modal-section hidden">
+          <div class="section-icon info">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/>
+            </svg>
+          </div>
+          <div class="section-content">
+            <h3 class="section-title">Componentes / Subserviços</h3>
+            <ul id="modalSubservices" class="subservices-list"></ul>
+          </div>
+        </section>
       </div>
 
       <div class="modal-footer">
@@ -117,6 +152,40 @@
           </svg>
           Documentação Oficial
         </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ======== SUB-MODAL ======== -->
+  <div id="subModal" class="modal-overlay sub-modal-overlay" role="dialog" aria-modal="true" aria-labelledby="subModalTitle">
+    <div class="modal-container sub-modal-container">
+      <button class="modal-close" id="subModalClose" aria-label="Fechar detalhe">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+          <line x1="18" y1="6" x2="6" y2="18"/>
+          <line x1="6" y1="6" x2="18" y2="18"/>
+        </svg>
+      </button>
+
+      <div class="modal-header">
+        <div class="modal-title-group">
+          <span class="modal-category-badge">Componente / Subserviço</span>
+          <h2 id="subModalTitle" class="modal-service-title"></h2>
+        </div>
+      </div>
+
+      <div class="modal-body">
+        <section class="modal-section">
+          <div class="section-content">
+            <h3 class="section-title">O que é?</h3>
+            <p id="subModalDescription" class="section-text"></p>
+          </div>
+        </section>
+      </div>
+      
+      <div class="modal-footer">
+        <button id="subModalBack" class="docs-btn" style="background: var(--surface-3); color: var(--text-primary); border: none; cursor: pointer;">
+           Voltar ao serviço
+        </button>
       </div>
     </div>
   </div>
