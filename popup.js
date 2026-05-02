@@ -1931,6 +1931,7 @@ const servicesGrid   = document.getElementById("servicesGrid");
 const panelTitle     = document.getElementById("panelTitle");
 const serviceCount   = document.getElementById("serviceCount");
 const searchInput    = document.getElementById("searchInput");
+const headerSearch   = document.querySelector(".header-search");
 const modal          = document.getElementById("modal");
 const modalClose     = document.getElementById("modalClose");
 const modalIcon      = document.getElementById("modalIcon");
@@ -2120,11 +2121,18 @@ function switchView(view) {
     tabArch.classList.remove("active");
     catalogView.classList.add("active-view");
     archView.classList.remove("active-view");
+    if (headerSearch) headerSearch.style.display = "";
   } else {
     tabCatalog.classList.remove("active");
     tabArch.classList.add("active");
     catalogView.classList.remove("active-view");
     archView.classList.add("active-view");
+    if (headerSearch) headerSearch.style.display = "none";
+    
+    // Limpa a busca ao ir para arquiteturas para evitar confusão ao voltar
+    searchQuery = "";
+    if (searchInput) searchInput.value = "";
+    
     renderArchGrid();
   }
 }

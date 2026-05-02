@@ -11,3 +11,6 @@ antigravity/
 node_modules/
 .vscode/
 .idea/
+
+# Scratch files
+scratch/
